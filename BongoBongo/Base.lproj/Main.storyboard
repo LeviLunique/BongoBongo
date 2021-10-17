@@ -18,7 +18,19 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dO3-TF-KZV">
                                 <rect key="frame" x="0.0" y="44" width="414" height="787"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Geo-Fz-SJS">
+                                        <rect key="frame" x="170" y="25.5" width="74" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Geo-Fz-SJS" firstAttribute="centerX" secondItem="dO3-TF-KZV" secondAttribute="centerX" id="rBU-aN-VJx"/>
+                                    <constraint firstItem="Geo-Fz-SJS" firstAttribute="centerY" secondItem="dO3-TF-KZV" secondAttribute="centerY" constant="-350" id="zp3-6z-QQs"/>
+                                </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="61" translatesAutoresizingMaskIntoConstraints="NO" id="egM-Ky-HVI">
                                 <rect key="frame" x="0.0" y="831" width="414" height="31"/>
@@ -64,6 +76,7 @@
                     </view>
                     <connections>
                         <outlet property="board" destination="dO3-TF-KZV" id="4uC-9s-ObU"/>
+                        <outlet property="label" destination="Geo-Fz-SJS" id="kNO-jp-QvP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
