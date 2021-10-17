@@ -11,6 +11,9 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var board: UIView!{
         didSet{
+            let tap = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
+            board.isUserInteractionEnabled = true
+            board.addGestureRecognizer(tap)
             animator = UIDynamicAnimator(referenceView: board)
             behavior = SquareBehavior()
             animator?.addBehavior(behavior!)
@@ -21,6 +24,28 @@ class ViewController: UIViewController {
     private var behavior: SquareBehavior?
     private var squares = [UIView]()
     
+    @objc func onTap(_ sender: UITapGestureRecognizer){
+        sender.location(in: board)
+        let tappedLocation = sender.location(in: board)
+        createSquare(at: tappedLocation)
+        
+        
+    }
+    private func createSquare(at point: CGPoint){
+        let frame = CGRect(origin: point, size: CGSize(width: 30, height: 30))
+        
+        let square = UIView(frame: frame)
+        square.backgroundColor = UIColor(
+            red: CGFloat.random(in: 0...1),
+            green: CGFloat.random(in: 0...1),
+            blue: CGFloat.random(in: 0...1),
+            alpha: 1)
+        
+        board.addSubview(square)
+        squares.append(square)
+        behavior?.addItem(square)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -28,15 +53,9 @@ class ViewController: UIViewController {
 
     @IBAction func onSquare(_ sender: UIButton) {
         
-        var frame = CGRect(origin: .zero, size: CGSize(width: 50, height: 50))
         let x = arc4random() % UInt32(board.bounds.size.width)
-        frame.origin.x = CGFloat(x)
-        
-        let square = UIView(frame: frame)
-        square.backgroundColor = UIColor.cyan
-        board.addSubview(square)
-        squares.append(square)
-        behavior?.addItem(square)
+        let point = CGPoint(x: Int(x), y: 0)
+        createSquare(at: point)
         
     }
     
